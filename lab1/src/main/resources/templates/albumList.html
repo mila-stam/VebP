@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Songs Homepage - Welcome to My Music Store</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to My Music Store</h1>
+    <a href="/albums/add-album"></a>
+</header>
+<main>
+    <h2>Choose a song:</h2>
+    <!-- Display radio buttons for each song,
+            the value should be the trackId
+            and the displayed text should be Title: <songTitle>, Genre:<genre>, Release Year: <releaseYear> -->
+    <form th:method="POST" th:action="@{/album}">
+        <label>Search category</label>
+        <input name="Search category" ><input type='submit' value='Submit'>
+        <div th:each="album : ${albumList}">
+            <input type="radio" name="songRadio" th:id="${album.getId()}" th:value="${album.getId()}">
+            <label th:for="${album.getId()}" th:text="'Title: ' + ${album.getId()} + ', Genre: ' + ${album.getGenre()} + ', Release Year: ' + ${album.getReleaseYear()}"></label>
+            <a th:href="${'/albums/edit-form/'+ album.getId()}" >Edit</a>
+            <a th:href="${'/albums/delete/'+ album.getId()}">Delete</a>
+            <br>
+        </div>
+        <br>
+        <input type='submit' value='Submit'>
+    </form>
+    <a th:href="@{/albums/add-form}" >Add song</a>
+</main>
+</body>
+</html>

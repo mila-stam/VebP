@@ -50,4 +50,26 @@ public class AlbumRepository {
         }
         return album;
     }
+    public Album addAlbum(Album album){
+        albums.add(album);
+        return album;
+    }
+
+    public Album modifyAlbum(Long albumId, Long id, String name,String genre,String releaseYear){
+        Album album=findAlbumById(albumId);
+        if (album!=null){
+            album.setName(name);
+            album.setGenre(genre);
+            album.setReleaseYear(releaseYear);
+        }
+        return album;
+    }
+
+    public Album deleteById(Long id){
+        Album album=findAlbumById(id);
+        if (album!=null){
+            albums.remove(album);
+        }
+        return album;
+    }
 }

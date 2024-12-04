@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class AlbumServiceImpl implements AlbumService{
-    private AlbumRepository albumRepository;
+    private final AlbumRepository albumRepository;
     public AlbumServiceImpl(AlbumRepository albumRepository) {
         this.albumRepository=albumRepository;
     }
@@ -20,4 +20,32 @@ public class AlbumServiceImpl implements AlbumService{
     public Album addSongToAlbum(Long albumId, Song song){
         return albumRepository.addSongToAlbum(song,albumId);
     }
+
+    @Override
+    public List<Album> albumList() {
+        return albumRepository.findAll();
+    }
+
+    @Override
+    public Album addAlbum(Long id, String name, String genre, String releaseYear) {
+        Album album = new Album(name,genre,releaseYear);
+        albumRepository.addAlbum(album);
+        return album;
+    }
+
+    @Override
+    public Album modifyAlbum(Long albumId, Long id, String name, String genre, String releaseYear) {
+        return albumRepository.modifyAlbum(albumId,id,name,genre,releaseYear);
+    }
+
+    @Override
+    public Album findById(Long id) {
+        return albumRepository.deleteById(id);
+    }
+
+    @Override
+    public Album deleteAlbumById(Long id) {
+        return null;
+    }
+
 }

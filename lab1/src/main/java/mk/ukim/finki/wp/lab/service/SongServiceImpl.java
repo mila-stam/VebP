@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class SongServiceImpl implements SongService {
-    private SongRepository songRepository;
+    private final SongRepository songRepository;
     private ArtistRepository artistRepository;
 
     public SongServiceImpl(SongRepository songRepository, ArtistRepository artistRepository) {

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form th:method="POST" th:action="${album == null ? '/albums/add' : '/albums/edit/'+album.getId()}" >
+  <label for="title"> Title: </label>
+  <input  type="text"
+          id="title"
+          name="title"
+          th:value="(${album} != null ? ${album.getName()} : '')"
+          placeholder="Enter title">
+  <label for="id"> Id: </label>
+  <input  type="text"
+          id="id"
+          name="trackId"
+          th:value="(${album} != null ? ${album.getId()} : '')"
+          placeholder="Enter album id">
+  <label for="releaseYear"> Release year: </label>
+  <input  type="number"
+          id="releaseYear"
+          name="releaseYear"
+          th:value="(${album} != null ? ${album.getReleaseYear()} : '')"
+          placeholder="Enter release year">
+  <label for="genre"> Genre: </label>
+  <input  type="text"
+          id="genre"
+          name="genre"
+          th:value="(${album} != null ? ${album.getGenre()} : '')"
+          placeholder="Enter genre">
+
+  <input type='submit' value='Submit'>
+
+</form>
+
+</body>
+</html>

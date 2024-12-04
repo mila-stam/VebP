@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class SongController {
-    private AlbumService albumService;
-    private SongService songService;
+    private final AlbumService albumService;
+    private final SongService songService;
     public SongController(SongService songService, AlbumService albumService){
         this.albumService=albumService;
         this.songService=songService;
